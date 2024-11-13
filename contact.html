@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tom Keren</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <style>
+        /* Hide scrollbar for all browsers */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Hide scrollbar for Chrome, Safari and Opera */
+        ::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* Hide scrollbar for IE, Edge and Firefox */
+        html {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+
+        html, body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Navbar styles */
+        .navbar {
+            background-color: white;
+            border-bottom: 2px solid #e0e0e0;
+            padding: 0.5rem 2rem;
+        }
+        .navbar-brand {
+            font-size: 1.5rem;
+            padding-left: 1rem;
+        }
+        .nav-link {
+            color: #333 !important;
+            margin-left: 1.5rem;
+            font-size: 1.1rem;
+            position: relative;
+            transition: color 0.3s;
+        }
+        .nav-link::after {
+            content: "";
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #8a2be2;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        .nav-link.active {
+            color: #8a2be2 !important;
+        }
+
+        /* Contact Form Styles */
+        .contact-section {
+            padding: 50px 20px;
+            height: 100vh;
+            overflow-y: auto;
+            overflow-x: hidden;
+            background-color: #f8f9fa;
+        }
+
+        .contact-form {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-control:focus {
+            border-color: #8a2be2;
+            box-shadow: 0 0 0 0.2rem rgba(138, 43, 226, 0.25);
+        }
+
+        .btn-submit {
+            background-color: #8a2be2;
+            color: white;
+            padding: 10px 30px;
+            border: none;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-submit:hover {
+            background-color: #7424c9;
+            transform: translateY(-2px);
+        }
+
+        .contact-info {
+            background-color: #8a2be2;
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            height: 100%;
+        }
+
+        .contact-info i {
+            font-size: 24px;
+            margin-right: 10px;
+        }
+
+        .alert {
+            display: none;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Tom</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="/CODEPOLITAN/BELAJAR HTML/index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/CODEPOLITAN/BELAJAR HTML/about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/CODEPOLITAN/BELAJAR HTML/services.html">Services</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="/CODEPOLITAN/BELAJAR HTML/contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <h2 class="text-center mb-5" style="color: #8a2be2;">Contact Me</h2>
+                    
+                    <div class="row">
+                        <!-- Contact Form -->
+                        <div class="col-md-7 mb-4">
+                            <div class="contact-form">
+                                <form id="contactForm">
+                                    <div class="mb-3">
+                                        <label for="name" class="form-label">Name</label>
+                                        <input type="text" class="form-control" id="name" name="name" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="email" class="form-label">Email</label>
+                                        <input type="email" class="form-control" id="email" name="email" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="subject" class="form-label">Subject</label>
+                                        <input type="text" class="form-control" id="subject" name="subject" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="message" class="form-label">Message</label>
+                                        <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
+                                    </div>
+                                    <button type="submit" class="btn btn-submit">Send Message</button>
+                                </form>
+                                
+                                <!-- Alert Messages -->
+                                <div class="alert alert-success" id="successAlert" role="alert">
+                                    Your message has been sent successfully!
+                                </div>
+                                <div class="alert alert-danger" id="errorAlert" role="alert">
+                                    There was an error sending your message. Please try again.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Contact Information -->
+                        <div class="col-md-5 mb-4">
+                            <div class="contact-info">
+                                <h3 class="mb-4">Get in Touch</h3>
+                                <p class="mb-4">Have questions? We'd love to hear from you. Send us a message and we'll respond as soon as possible.</p>
+                                
+                                <div class="mb-4">
+                                    <i class="bi bi-geo-alt"></i>
+                                    <span>123 Business Street, Jakarta, Indonesia</span>
+                                </div>
+                                
+                                <div class="mb-4">
+                                    <i class="bi bi-envelope"></i>
+                                    <span>info@example.com</span>
+                                </div>
+                                
+                                <div class="mb-4">
+                                    <i class="bi bi-phone"></i>
+                                    <span>+62 123 456 7890</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- EmailJS Integration -->
+    <script>
+        // Initialize EmailJS
+        // Replace 'YOUR_PUBLIC_KEY' with your actual EmailJS public key
+        emailjs.init('1Pn0H8jUnJEhFfMfV');
+
+        // Form submission handler
+        document.getElementById('contactForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            // Get the form data
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                subject: document.getElementById('subject').value,
+                message: document.getElementById('message').value
+            };
+
+            // Send email using EmailJS
+            // Replace 'YOUR_SERVICE_ID' and 'YOUR_TEMPLATE_ID' with your actual EmailJS service and template IDs
+            emailjs.send('service_d15z6u7', 'template_d8vlgs4', formData)
+                .then(function(response) {
+                    // Show success message
+                    document.getElementById('successAlert').style.display = 'block';
+                    document.getElementById('errorAlert').style.display = 'none';
+                    // Reset form
+                    document.getElementById('contactForm').reset();
+                    // Hide success message after 5 seconds
+                    setTimeout(() => {
+                        document.getElementById('successAlert').style.display = 'none';
+                    }, 5000);
+                }, function(error) {
+                    // Show error message
+                    document.getElementById('successAlert').style.display = 'none';
+                    document.getElementById('errorAlert').style.display = 'block';
+                    console.error('Email send failed:', error);
+                });
+        });
+    </script>
+</body>
+</html>

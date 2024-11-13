@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tom Keren</title>
+    <!-- Link to Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        /* Set body and html to ensure no scrolling on the entire page */
+        html, body {
+            height: 100%;
+            margin: 0;
+            overflow: hidden; /* Hide the overflow to prevent scrolling */
+        }
+
+        /* Navbar background and border */
+        .navbar {
+          background-color: white;
+          border-bottom: 2px solid #e0e0e0; /* Light gray border below navbar */
+          padding: 0.5rem 2rem; /* Add padding to navbar for spacing */
+        }
+        /* Navbar brand positioning */
+        .navbar-brand {
+          font-size: 1.5rem; /* Increase brand font size */
+          padding-left: 1rem; /* Add padding on the left side */
+        }
+        /* Default link styling */
+        .nav-link {
+          color: #333 !important;
+          position: relative;
+          transition: color 0.3s;
+          margin-left: 1.5rem; /* Add space between each link */
+          font-size: 1.1rem; /* Slightly increase font size */
+        }
+        /* Underline effect on hover */
+        .nav-link::after {
+          content: "";
+          position: absolute;
+          bottom: -4px;
+          left: 0;
+          width: 0;
+          height: 2px;
+          background-color: #8a2be2; /* Purple color for the underline */
+          transition: width 0.3s ease;
+        }
+        /* Show underline on hover only */
+        .nav-link:hover::after {
+          width: 100%;
+        }
+        /* Change link color on hover */
+        .nav-link:hover {
+          color: #555 !important;
+        }
+        /* Active link styling without underline */
+        .nav-link.active {
+          color: #8a2be2 !important; /* Purple color for active link */
+        }
+
+        /* Ensure that the About section does not cause scroll */
+        #about {
+            height: 100vh; /* Fill the entire view height */
+            overflow: hidden; /* Prevent scrolling within the About section */
+            position: relative;
+        }
+
+        /* About Section Content Styling */
+        #about .container {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        /* Content container adjustments */
+        .row {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Optional custom styles for section titles */
+        h3, h2 {
+            color: #8a2be2;
+        }
+
+        /* Set skills and tools section to align properly */
+        .skill-item, .tool-item {
+            border: 2px solid #8a2be2;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 10px;
+        }
+
+        /* Icon Image */
+        .icon-image {
+            width: 48px;
+            height: 48px;
+        }
+
+    </style>
+</head>
+<body>
+    
+    <!-- Navbar -->
+<nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Tom</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/CODEPOLITAN/BELAJAR HTML/index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="/CODEPOLITAN/BELAJAR HTML/about.html">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/CODEPOLITAN/BELAJAR HTML/services.html">Services</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/CODEPOLITAN/BELAJAR HTML/contact.html">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+<!-- About Section -->
+<section id="about">
+    <div class="container">
+      <!-- Who I Am Section -->
+      <div class="row justify-content-center">
+        <div class="col-lg-10 mb-5">
+          <div class="" style="border-color: #8a2be2;">
+            <h3 class="text-center">Who I Am</h3>
+            <p class="text-center">
+              Hello! I'm a passionate web developer who loves to explore new technologies. I enjoy solving complex problems and bringing ideas to life through code. I have experience with web development and always strive to improve my skills.
+            </p>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Skills Section -->
+      <div class="row justify-content-center">
+        <div class="col-lg-10 mb-5">
+          <h3 class="text-center mb-4">Skills</h3>
+          <div class="d-flex flex-wrap justify-content-center gap-4">
+            <div class="skill-item p-4 border rounded text-center" style="width: 150px;">
+              <img src="https://img.icons8.com/color/48/000000/html-5.png" alt="HTML5" class="icon-image mb-2" />
+              <p class="mb-0">HTML5</p>
+            </div>
+            <div class="skill-item p-4 border rounded text-center" style="width: 150px;">
+              <img src="https://img.icons8.com/color/48/000000/css3.png" alt="CSS3" class="icon-image mb-2" />
+              <p class="mb-0">CSS3</p>
+            </div>
+            <div class="skill-item p-4 border rounded text-center" style="width: 150px;">
+              <img src="https://img.icons8.com/color/48/000000/javascript.png" alt="JavaScript" class="icon-image mb-2" />
+              <p class="mb-0">JavaScript</p>
+            </div>
+            <div class="skill-item p-4 border rounded text-center" style="width: 150px;">
+              <img src="https://img.icons8.com/color/48/000000/react-native.png" alt="React" class="icon-image mb-2" />
+              <p class="mb-0">React</p>
+            </div>
+            <!-- New Skill Added -->
+            <div class="skill-item p-4 border rounded text-center" style="width: 150px;">
+              <img src="https://img.icons8.com/color/48/000000/nodejs.png" alt="Node.js" class="icon-image mb-2" />
+              <p class="mb-0">Node.js</p>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Tools Section -->
+      <div class="row justify-content-center">
+        <div class="col-lg-10 mb-5">
+          <h3 class="text-center mb-4">Tools I Use</h3>
+          <div class="d-flex flex-wrap justify-content-center gap-4">
+            <div class="tool-item p-4 border rounded text-center" style="width: 150px;">
+              <img src="https://img.icons8.com/color/48/000000/visual-studio-code-2019.png" alt="VS Code" class="icon-image mb-2" />
+              <p class="mb-0">VS Code</p>
+            </div>
+            <div class="tool-item p-4 border rounded text-center" style="width: 150px;">
+              <img src="https://img.icons8.com/color/48/000000/github.png" alt="GitHub" class="icon-image mb-2" />
+              <p class="mb-0">GitHub</p>
+            </div>
+            <div class="tool-item p-4 border rounded text-center" style="width: 150px;">
+              <img src="https://img.icons8.com/color/48/000000/figma--v1.png" alt="Figma" class="icon-image mb-2" />
+              <p class="mb-0">Figma</p>
+            </div>
+            <div class="tool-item p-4 border rounded text-center" style="width: 150px;">
+              <img src="https://img.icons8.com/color/48/000000/api.png" alt="Postman" class="icon-image mb-2" />
+              <p class="mb-0">Postman</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
+
+<!-- Link to Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
